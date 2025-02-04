@@ -14,24 +14,24 @@ const messages = [
   },
 ];
 
-// Index Route
+
 router.get("/", (req, res) => {
   res.render("index", { title: "Mini Messageboard", messages });
 });
 
-// New Message Form Route
+
 router.get("/new", (req, res) => {
   res.render("form");
 });
 
-// Handle Form Submission
+
 router.post("/new", (req, res) => {
   const { messageUser, messageText } = req.body;
   messages.push({ text: messageText, user: messageUser, added: new Date() });
   res.redirect("/");
 });
 
-// Message Detail Route
+
 router.get("/message/:index", (req, res) => {
   const message = messages[req.params.index];
   if (!message) {
